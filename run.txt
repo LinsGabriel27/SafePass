@@ -1,0 +1,3 @@
+To run the API, use in console:
+
+uvicorn main:app --reload
