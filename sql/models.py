@@ -13,7 +13,7 @@ class User(Base):
 
     passwords = relationship("PasswordEntry", back_populates="owner", cascade="all, delete-orphan")
 
-class PasswordEntry(Base):
+class Password(Base):
     __tablename__ = "passwords"
 
     id = Column(Int, primary_key=True, index=True)
