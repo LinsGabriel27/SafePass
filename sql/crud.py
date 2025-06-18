@@ -1,10 +1,10 @@
 from sqlalchemy.orm import Session
-from sql.models import User, PasswordEntry
-from fastapi_sets.schemas import UserCreate, PasswordCreate
-import bcrypt
+from sql.models import User, Password
+from fastapi_sets.schemas import UsuarioCreate, PasswordCreate
+from passlib.hash import bcrypt
 
 # Criar usuário
-def create_user(db: Session, user: UserCreate):
+def create_user(db: Session, user: UsuarioCreate):
     hashed_pw = bcrypt.hash(user.password)
     db_user = User(
         username=user.username,
@@ -22,7 +22,7 @@ def get_user_by_id(db: Session, user_id: int):
 
 # Criar senha
 def create_password(db: Session, user_id: int, senha: PasswordCreate):
-    db_senha = PasswordEntry(
+    db_senha = Password(
         owner_id=user_id,
         login=senha.login,
         encrypted_password=senha.encrypted_password,

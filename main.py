@@ -1,14 +1,6 @@
 from fastapi import FastAPI
-from fastapi import HTTPException
-import sql
+from routes import auth_routes
 
 app = FastAPI()
 
-@app.get("/")
-async def root():
-    return {"detail": "ok"}
-    
-@app.get("/createDB")
-def create_db():
-    sql.init_db()
-    return {"Detail": "Banco criado"}
+app.include_router(auth_routes.router)
