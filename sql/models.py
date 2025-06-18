@@ -9,6 +9,7 @@ class User(Base):
     id = Column(Int, primary_key=True, index=True)
     username = Column(Str, unique=True, nullable=False,index=True)
     hashd_password = Column(Str, nullable=False)
+    email = Column(Str, nullable=False, index=True)
 
     passwords = relationship("PasswordEntry", back_populates="owner", cascade="all, delete-orphan")
 
