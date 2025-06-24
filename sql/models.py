@@ -11,7 +11,7 @@ class User(Base):
     hashd_password = Column(Str, nullable=False)
     email = Column(Str, nullable=False, index=True)
 
-    passwords = relationship("PasswordEntry", back_populates="owner", cascade="all, delete-orphan")
+    passwords = relationship("Password", back_populates="owner", cascade="all, delete-orphan")
 
 class Password(Base):
     __tablename__ = "passwords"
